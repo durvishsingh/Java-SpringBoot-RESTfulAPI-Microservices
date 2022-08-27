@@ -1,8 +1,22 @@
 package com.durvish99.restwebservices.restfulwebservices.containeruser;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
+
+@Entity(name = "USER_DETAILS")
 public class User 
 {
+	protected User() {
+		
+	}
+	
+	@Id
+	@GeneratedValue
 	int id;
+	
 	String name;
 	public User(int id, String name) 
 	{

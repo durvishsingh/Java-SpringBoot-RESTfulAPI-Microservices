@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -40,10 +42,17 @@ public class UserDaoService
 		return null;
 		*/
 	}
+	
 	public User creatUser(User user) 
 	{
 		User newUser = new User(++userCount, user.getName());
 		users.add(newUser);
 		return newUser;
+	}
+	
+	public void deleteUser(int id) 
+	{
+		Predicate<? super User> predicate = user -> user.getId()==id;
+		users.removeIf(predicate);
 	}
 }
